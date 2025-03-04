@@ -6,7 +6,7 @@ console.log("  'opposite angle' (протилежний кут від катет
 console.log("Увага! Всі значення мають бути додатні та дійсні!");
 
 function triangle(value1, type1, value2, type2) {
-    let a, b, c, alpha, beta;
+    let a, b, c, alpha, beta, rad;
     
     if (value1 <= 0 || value2 <= 0) {
         console.error("Помилка: Значення мають бути більші за 0");
@@ -47,7 +47,7 @@ function triangle(value1, type1, value2, type2) {
                 return;
             }
             
-            let rad = alpha * (Math.PI / 180);
+            rad = alpha * (Math.PI / 180);
             a = c * Math.sin(rad);
             b = c * Math.cos(rad);
             beta = 90 - alpha;
@@ -92,7 +92,10 @@ function triangle(value1, type1, value2, type2) {
 
     alpha = Number(alpha.toFixed(2));
     beta = Number(beta.toFixed(2));
-    
+    if (alpha <= 0 || alpha >= 90 || beta <= 0 || beta >= 90) {
+        console.error("Помилка: Нереальний трикутник! Переконайтесь у правильності введених даних.");
+        return;
+    }
     console.log(`Сторони трикутника: a = ${a}, b = ${b}, c = ${c}`);
     console.log(`Кути трикутника: alpha = ${alpha}, beta = ${beta}`);
 }
