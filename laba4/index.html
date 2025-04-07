@@ -12,7 +12,7 @@
 
         const sparseArray = denseArray.map(value => Math.random() > 0.3 ? value : undefined);
 
-        console.log("=== Нерозріджений масив (оригінал) ===");
+        console.log("=== Нерозріджений масив ===");
         console.log(denseArray);
 
         console.log("Bubble sort (зростання):", SortLib.bubbleSort(denseArray, true));
@@ -27,7 +27,7 @@
         console.log("Shell sort (спадання):", SortLib.shellSort(denseArray, false));
         console.log("Quick sort (спадання):", SortLib.quickSort(denseArray, false));
 
-        console.log("=== Розріджений масив (оригінал) ===");
+        console.log("=== Розріджений масив ===");
         console.log(sparseArray);
 
         console.log("Bubble sort (зростання):", SortLib.bubbleSort(sparseArray, true));
