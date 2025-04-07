@@ -6,44 +6,41 @@
     <script src="script.js"></script>
 </head>
 <body>
-    <h1>Перевірка сортування</h1>
+    <h1>Демонстрація роботи бібліотеки сортування</h1>
     <script>
-         let fullArray = Array.from({length: 100}, () =>
-            Math.random() > 0.3 ? Math.floor(Math.random() * 100) : undefined
-        );
+        const denseArray = Array.from({length: 100}, () => Math.floor(Math.random() * 100));
 
-        console.log("Початковий масив:");
-        console.log(fullArray);
+        const sparseArray = denseArray.map(value => Math.random() > 0.3 ? value : undefined);
 
-        console.log("Bubble (за зростанням):");
-        console.log(SortLib.bubbleSort(fullArray, true));
+        console.log("=== Нерозріджений масив (оригінал) ===");
+        console.log(denseArray);
 
-        console.log("Selection (за зростанням):");
-        console.log(SortLib.selectionSort(fullArray, true));
+        console.log("Bubble sort (зростання):", SortLib.bubbleSort(denseArray, true));
+        console.log("Selection sort (зростання):", SortLib.selectionSort(denseArray, true));
+        console.log("Insertion sort (зростання):", SortLib.insertionSort(denseArray, true));
+        console.log("Shell sort (зростання):", SortLib.shellSort(denseArray, true));
+        console.log("Quick sort (зростання):", SortLib.quickSort(denseArray, true));
 
-        console.log("Insertion (за зростанням):");
-        console.log(SortLib.insertionSort(fullArray, true));
+        console.log("Bubble sort (спадання):", SortLib.bubbleSort(denseArray, false));
+        console.log("Selection sort (спадання):", SortLib.selectionSort(denseArray, false));
+        console.log("Insertion sort (спадання):", SortLib.insertionSort(denseArray, false));
+        console.log("Shell sort (спадання):", SortLib.shellSort(denseArray, false));
+        console.log("Quick sort (спадання):", SortLib.quickSort(denseArray, false));
 
-        console.log("Shell (за зростанням):");
-        console.log(SortLib.shellSort(fullArray, true));
+        console.log("=== Розріджений масив (оригінал) ===");
+        console.log(sparseArray);
 
-        console.log("Quick (за зростанням):");
-        console.log(SortLib.quickSort(fullArray, true));
+        console.log("Bubble sort (зростання):", SortLib.bubbleSort(sparseArray, true));
+        console.log("Selection sort (зростання):", SortLib.selectionSort(sparseArray, true));
+        console.log("Insertion sort (зростання):", SortLib.insertionSort(sparseArray, true));
+        console.log("Shell sort (зростання):", SortLib.shellSort(sparseArray, true));
+        console.log("Quick sort (зростання):", SortLib.quickSort(sparseArray, true));
 
-        console.log("Bubble (за спаданням):");
-        console.log(SortLib.bubbleSort(fullArray, false));
-
-        console.log("Selection (за спаданням):");
-        console.log(SortLib.selectionSort(fullArray, false));
-
-        console.log("Insertion (за спаданням):");
-        console.log(SortLib.insertionSort(fullArray, false));
-
-        console.log("Shell (за спаданням):");
-        console.log(SortLib.shellSort(fullArray, false));
-
-        console.log("Quick (за спаданням):");
-        console.log(SortLib.quickSort(fullArray, false));
+        console.log("Bubble sort (спадання):", SortLib.bubbleSort(sparseArray, false));
+        console.log("Selection sort (спадання):", SortLib.selectionSort(sparseArray, false));
+        console.log("Insertion sort (спадання):", SortLib.insertionSort(sparseArray, false));
+        console.log("Shell sort (спадання):", SortLib.shellSort(sparseArray, false));
+        console.log("Quick sort (спадання):", SortLib.quickSort(sparseArray, false));
     </script>
 </body>
 </html>
