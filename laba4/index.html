@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Демонстрація сортувань</title>
+    <script src="script.js"></script>
+</head>
+<body>
+    <h1>Перевірка сортування</h1>
+    <script>
+         let fullArray = Array.from({length: 100}, () =>
+            Math.random() > 0.3 ? Math.floor(Math.random() * 100) : undefined
+        );
+
+        console.log("Початковий масив:");
+        console.log(fullArray);
+
+        console.log("Bubble (за зростанням):");
+        console.log(SortLib.bubbleSort(fullArray, true));
+
+        console.log("Selection (за зростанням):");
+        console.log(SortLib.selectionSort(fullArray, true));
+
+        console.log("Insertion (за зростанням):");
+        console.log(SortLib.insertionSort(fullArray, true));
+
+        console.log("Shell (за зростанням):");
+        console.log(SortLib.shellSort(fullArray, true));
+
+        console.log("Quick (за зростанням):");
+        console.log(SortLib.quickSort(fullArray, true));
+
+        console.log("Bubble (за спаданням):");
+        console.log(SortLib.bubbleSort(fullArray, false));
+
+        console.log("Selection (за спаданням):");
+        console.log(SortLib.selectionSort(fullArray, false));
+
+        console.log("Insertion (за спаданням):");
+        console.log(SortLib.insertionSort(fullArray, false));
+
+        console.log("Shell (за спаданням):");
+        console.log(SortLib.shellSort(fullArray, false));
+
+        console.log("Quick (за спаданням):");
+        console.log(SortLib.quickSort(fullArray, false));
+    </script>
+</body>
+</html>
