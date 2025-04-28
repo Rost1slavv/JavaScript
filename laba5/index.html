@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Hunt</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="setup">
+        <h1>Pixel Hunt</h1>
+        <label for="difficulty">Складність:</label>
+        <select id="difficulty">
+            <option value="easy">Новачок (10 с)</option>
+            <option value="normal">Профі (6 с)</option>
+            <option value="hard">Божевілля (2 с)</option>
+        </select>
+        <br><br>
+        <label for="color">Колір блоку:</label>
+        <select id="color">
+            <option value="#e74c3c">Червоний</option>
+            <option value="#3498db">Синій</option>
+            <option value="#2ecc71">Зелений</option>
+            <option value="#f1c40f">Жовтий</option>
+            <option value="#9b59b6">Фіолетовий</option>
+        </select>
+        <br><br>
+        <button id="start-button">Розпочати гру</button>
+    </div>
+    <div id="game">
+        <p>Рахунок: <span id="score">0</span></p>
+        <p>Час: <span id="time-left">0</span> с</p>
+        <div id="block"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
