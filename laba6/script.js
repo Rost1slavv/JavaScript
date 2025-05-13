@@ -1,23 +1,41 @@
 const gridSize = 5;
+let allGrids = [];
+let initialGrid = [];
 let grid = [];
 let moves = 0;
 let time = 0;
 let timerInterval;
 
 document.addEventListener('DOMContentLoaded', () => {
-    initializeGame();
-    document.getElementById('restartBtn').addEventListener('click', restartGame);
-});
-
-function initializeGame() {
     fetch('data/initialState.json')
         .then(response => response.json())
         .then(data => {
-            grid = data.grid;
-            renderGrid();
-            startTimer();
+            allGrids = data.grids;
+            startNewGame();
         })
         .catch(error => console.error('Помилка завантаження JSON:', error));
+});
+
+function startNewGame() {
+    if (allGrids.length === 0) {
+        console.error('Немає доступних сіток у JSON.');
+        return;
+    }
+    const randomIndex = Math.floor(Math.random() * allGrids.length);
+    initialGrid = allGrids[randomIndex].map(row => row.slice()); // Глибока копія
+    grid = initialGrid.map(row => row.slice()); // Глибока копія
+    renderGrid();
+    moves = 0;
+    document.getElementById('moves').textContent = `Moves: ${moves}`;
+    startTimer();
+}
+
+function restartGame() {
+    grid = initialGrid.map(row => row.slice()); // Глибока копія
+    renderGrid();
+    moves = 0;
+    document.getElementById('moves').textContent = `Moves: ${moves}`;
+    startTimer();
 }
 
 function renderGrid() {
@@ -69,8 +87,5 @@ function startTimer() {
     }, 1000);
 }
 
-function restartGame() {
-    moves = 0;
-    document.getElementById('moves').textContent = `Moves: ${moves}`;
-    initializeGame();
-}
+document.getElementById('newGameBtn').addEventListener('click', startNewGame);
+document.getElementById('restartBtn').addEventListener('click', restartGame);
