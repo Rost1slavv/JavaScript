@@ -27,13 +27,13 @@ h1 {
 .cell {
     width: 60px;
     height: 60px;
-    background-color: #ccc;
+    background-color: #000; 
     cursor: pointer;
     transition: background-color 0.2s;
 }
 
 .cell.on {
-    background-color: #666;
+    background-color: #333; 
 }
 
 button {
