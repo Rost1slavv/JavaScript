@@ -67,7 +67,7 @@ function toggleCell(row, col) {
 function checkWin() {
     if (grid.every(row => row.every(cell => cell === 0))) {
         clearInterval(timerInterval);
-        alert('Ви перемогли!');
+        alert('ПОТУЖНА ПЕРЕМОГА');
     }
 }
 
