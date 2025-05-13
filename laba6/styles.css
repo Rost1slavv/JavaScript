@@ -42,7 +42,7 @@ button {
     cursor: pointer;
     background-color: #ddd;
     border: none;
-    margin: 0 10px;
+    margin-right: 20px;
 }
 
 button:hover {
