@@ -3,21 +3,34 @@ let grid = [];
 let moves = 0;
 let time = 0;
 let timerInterval;
+let levels = [];
+let currentLevel = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
-    initializeGame();
-    document.getElementById('restartBtn').addEventListener('click', restartGame);
-});
-
-function initializeGame() {
-    fetch('data/initialState.json')
+    fetch('data/levels.json')
         .then(response => response.json())
         .then(data => {
-            grid = data.grid;
-            renderGrid();
-            startTimer();
+            levels = data.levels;
+            initializeGame(currentLevel);
+            document.getElementById('restartBtn').addEventListener('click', () => initializeGame(currentLevel));
+            document.getElementById('nextBtn').addEventListener('click', () => {
+                currentLevel = (currentLevel + 1) % levels.length;
+                initializeGame(currentLevel);
+            });
         })
         .catch(error => console.error('Помилка завантаження JSON:', error));
+});
+
+function initializeGame(level) {
+    grid = levels[level].grid.map(row => row.slice());
+    moves = 0;
+    time = 0;
+    clearInterval(timerInterval);
+    renderGrid();
+    startTimer();
+    document.getElementById('target').textContent = `Target: ${levels[level].target}`;
+    document.getElementById('moves').textContent = `Moves: ${moves}`;
+    document.getElementById('time').textContent = `Time: 0:00`;
 }
 
 function renderGrid() {
@@ -67,10 +80,4 @@ function startTimer() {
         const seconds = time % 60;
         document.getElementById('time').textContent = `Time: ${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
     }, 1000);
-}
-
-function restartGame() {
-    moves = 0;
-    document.getElementById('moves').textContent = `Moves: ${moves}`;
-    initializeGame();
 }
