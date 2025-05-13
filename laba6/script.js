@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
             allGrids = data.grids;
             startNewGame();
         })
-        .catch(error => console.error('Помилка завантаження JSON:', error));
 });
 
 function startNewGame() {
@@ -22,8 +21,8 @@ function startNewGame() {
         return;
     }
     const randomIndex = Math.floor(Math.random() * allGrids.length);
-    initialGrid = allGrids[randomIndex].map(row => row.slice()); // Глибока копія
-    grid = initialGrid.map(row => row.slice()); // Глибока копія
+    initialGrid = allGrids[randomIndex].map(row => row.slice()); 
+    grid = initialGrid.map(row => row.slice()); 
     renderGrid();
     moves = 0;
     document.getElementById('moves').textContent = `Moves: ${moves}`;
@@ -31,7 +30,7 @@ function startNewGame() {
 }
 
 function restartGame() {
-    grid = initialGrid.map(row => row.slice()); // Глибока копія
+    grid = initialGrid.map(row => row.slice()); 
     renderGrid();
     moves = 0;
     document.getElementById('moves').textContent = `Moves: ${moves}`;
