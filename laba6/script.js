@@ -12,17 +12,13 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             allGrids = data.grids;
             startNewGame();
-        })
+        });
 });
 
 function startNewGame() {
-    if (allGrids.length === 0) {
-        console.error('Немає доступних сіток у JSON.');
-        return;
-    }
     const randomIndex = Math.floor(Math.random() * allGrids.length);
-    initialGrid = allGrids[randomIndex].map(row => row.slice()); 
-    grid = initialGrid.map(row => row.slice()); 
+    initialGrid = allGrids[randomIndex].map(row => row.slice());
+    grid = initialGrid.map(row => row.slice());
     renderGrid();
     moves = 0;
     document.getElementById('moves').textContent = `Moves: ${moves}`;
@@ -30,7 +26,7 @@ function startNewGame() {
 }
 
 function restartGame() {
-    grid = initialGrid.map(row => row.slice()); 
+    grid = initialGrid.map(row => row.slice());
     renderGrid();
     moves = 0;
     document.getElementById('moves').textContent = `Moves: ${moves}`;
