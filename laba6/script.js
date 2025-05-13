@@ -1,6 +1,6 @@
 const gridSize = 5;
-let allGrids = [];
-let initialGrid = [];
+let allLevels = [];
+let currentLevel = null;
 let grid = [];
 let moves = 0;
 let time = 0;
@@ -10,23 +10,24 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch('data/initialState.json')
         .then(response => response.json())
         .then(data => {
-            allGrids = data.grids;
+            allLevels = data.levels;
             startNewGame();
         });
 });
 
 function startNewGame() {
-    const randomIndex = Math.floor(Math.random() * allGrids.length);
-    initialGrid = allGrids[randomIndex].map(row => row.slice());
-    grid = initialGrid.map(row => row.slice());
+    const randomIndex = Math.floor(Math.random() * allLevels.length);
+    currentLevel = allLevels[randomIndex];
+    grid = currentLevel.grid.map(row => row.slice());
     renderGrid();
     moves = 0;
     document.getElementById('moves').textContent = `Moves: ${moves}`;
+    document.getElementById('target').textContent = `Target: ${currentLevel.target}`;
     startTimer();
 }
 
 function restartGame() {
-    grid = initialGrid.map(row => row.slice());
+    grid = currentLevel.grid.map(row => row.slice());
     renderGrid();
     moves = 0;
     document.getElementById('moves').textContent = `Moves: ${moves}`;
@@ -67,7 +68,11 @@ function toggleCell(row, col) {
 function checkWin() {
     if (grid.every(row => row.every(cell => cell === 0))) {
         clearInterval(timerInterval);
-        alert('ПОТУЖНА ПЕРЕМОГА');
+        if (moves <= currentLevel.target) {
+            alert('ПОТУЖНА ПЕРЕМОГА! Ви вклалися в цільову кількість ходів.');
+        } else {
+            alert('МЕНШ ПОТУЖНА ПЕРЕМОГА, але не вклалися в цільову кількість ходів.');
+        }
     }
 }
 
