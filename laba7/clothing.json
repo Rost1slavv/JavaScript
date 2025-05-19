@@ -5,28 +5,28 @@
             "id": 1,
             "name": "Футболка",
             "shortname": "tshirt",
-            "description": "Lorem ipsum dolor sit amet",
+            "description": "Зучність понад усе!",
             "price": 299.99
         },
         {
             "id": 2,
             "name": "Джинси",
             "shortname": "jeans",
-            "description": "Lorem ipsum",
+            "description": "Стильні шо капєц!",
             "price": 599.99
         },
         {
             "id": 3,
             "name": "Куртка",
             "shortname": "jacket",
-            "description": "Lorem ipsum",
+            "description": "Ідеально підходить вам!",
             "price": 999.99
         },
         {
             "id": 4,
             "name": "Шапка",
             "shortname": "hat",
-            "description": "Lorem ipsum",
+            "description": "Щоб не змерзнути!",
             "price": 199.99
         }
     ]
