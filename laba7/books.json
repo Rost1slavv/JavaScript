@@ -1,0 +1,33 @@
+{
+    "categoryName": "Книги",
+    "products": [
+        {
+            "id": 1,
+            "name": "Програмування на JavaScript",
+            "shortname": "jsbook",
+            "description": "Lorem ipsum dolor sit amet",
+            "price": 399.99
+        },
+        {
+            "id": 2,
+            "name": "Веб-розробка для початківців",
+            "shortname": "webdev",
+            "description": "Lorem ipsum",
+            "price": 299.99
+        },
+        {
+            "id": 3,
+            "name": "Дизайн інтерфейсів",
+            "shortname": "uidesign",
+            "description": "Lorem ipsum",
+            "price": 499.99
+        },
+        {
+            "id": 4,
+            "name": "Алгоритми та структури даних",
+            "shortname": "algorithms",
+            "description": "Lorem ipsum",
+            "price": 599.99
+        }
+    ]
+}
