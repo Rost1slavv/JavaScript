@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     homeLink.addEventListener('click', function(e) {
         e.preventDefault();
-        contentDiv.innerHTML = '<p>Привітики! Ти можеш вибрати шось із "Каталог" або "Specials"</p>';
+        contentDiv.innerHTML = '<p>Ласкаво просимо! Виберіть "Каталог" або "Specials".</p>';
     });
 
     catalogLink.addEventListener('click', function(e) {
@@ -41,9 +41,31 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(data => {
                 let html = `<h2>${data.categoryName}</h2><ul>`;
                 data.products.forEach(product => {
+                    let imageSrc = '';
+                    // Визначаємо шлях до зображення залежно від категорії "Книги" та shortname
+                    if (categoryShortname === 'books') {
+                        switch (product.shortname) {
+                            case '1984':
+                                imageSrc = 'images/1984.png';
+                                break;
+                            case 'Apaintedbird':
+                                imageSrc = 'images/Apaintedbird.png';
+                                break;
+                            case 'archivekgb':
+                                imageSrc = 'images/archivekgb.png';
+                                break;
+                            case 'slaughterhouseNo5':
+                                imageSrc = 'images/slaughterhouseNo5.jpg';
+                                break;
+                            default:
+                                imageSrc = 'https://place-hold.it/200x200';
+                        }
+                    } else {
+                        imageSrc = 'https://place-hold.it/200x200';
+                    }
                     html += `
                         <li>
-                            <img src="https://place-hold.it/200x200" alt="${product.name}">
+                            <img src="${imageSrc}" alt="${product.name}" onerror="this.src='https://place-hold.it/200x200';">
                             <h3>${product.name}</h3>
                             <p>${product.description}</p>
                             <p>Ціна: ${product.price} грн</p>
