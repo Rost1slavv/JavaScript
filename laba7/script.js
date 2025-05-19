@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     homeLink.addEventListener('click', function(e) {
         e.preventDefault();
-        contentDiv.innerHTML = '<p>Ласкаво просимо! Виберіть "Каталог" або "Specials".</p>';
+        contentDiv.innerHTML = '<p>Привітики! Ти можеш вибрати шось із "Каталог" або "Specials"</p>';
     });
 
     catalogLink.addEventListener('click', function(e) {
