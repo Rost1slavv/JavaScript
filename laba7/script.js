@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 let html = `<h2>${data.categoryName}</h2><ul>`;
                 data.products.forEach(product => {
                     let imageSrc = '';
+                    // Визначаємо шлях до зображення залежно від категорії та shortname
                     if (categoryShortname === 'books') {
                         switch (product.shortname) {
                             case '1984':
@@ -55,6 +56,40 @@ document.addEventListener('DOMContentLoaded', function() {
                                 break;
                             case 'slaughterhouseNo5':
                                 imageSrc = 'images/slaughterhouseNo5.jpg';
+                                break;
+                            default:
+                                imageSrc = 'https://place-hold.it/200x200';
+                        }
+                    } else if (categoryShortname === 'electronics') {
+                        switch (product.shortname) {
+                            case 'smartphone':
+                                imageSrc = 'images/smartphone.png';
+                                break;
+                            case 'laptop':
+                                imageSrc = 'images/laptop.png';
+                                break;
+                            case 'headphones':
+                                imageSrc = 'images/headphones.png';
+                                break;
+                            case 'tablet':
+                                imageSrc = 'images/tablet.png';
+                                break;
+                            default:
+                                imageSrc = 'https://place-hold.it/200x200';
+                        }
+                    } else if (categoryShortname === 'clothing') {
+                        switch (product.shortname) {
+                            case 'tshirt':
+                                imageSrc = 'images/tshirt.png';
+                                break;
+                            case 'jeans':
+                                imageSrc = 'images/jeans.png';
+                                break;
+                            case 'jacket':
+                                imageSrc = 'images/jacket.png';
+                                break;
+                            case 'hat':
+                                imageSrc = 'images/hat.png';
                                 break;
                             default:
                                 imageSrc = 'https://place-hold.it/200x200';
