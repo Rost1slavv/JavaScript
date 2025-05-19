@@ -42,7 +42,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 let html = `<h2>${data.categoryName}</h2><ul>`;
                 data.products.forEach(product => {
                     let imageSrc = '';
-                    // Визначаємо шлях до зображення залежно від категорії "Книги" та shortname
                     if (categoryShortname === 'books') {
                         switch (product.shortname) {
                             case '1984':
