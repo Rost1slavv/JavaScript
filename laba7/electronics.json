@@ -1,0 +1,33 @@
+{
+    "categoryName": "Електроніка",
+    "products": [
+        {
+            "id": 1,
+            "name": "Смартфон",
+            "shortname": "smartphone",
+            "description": "Lorem ipsum dolor sit amet",
+            "price": 5999.99
+        },
+        {
+            "id": 2,
+            "name": "Ноутбук",
+            "shortname": "laptop",
+            "description": "Lorem ipsum",
+            "price": 12999.99
+        },
+        {
+            "id": 3,
+            "name": "Навушники",
+            "shortname": "headphones",
+            "description": "Lorem ipsum",
+            "price": 1499.99
+        },
+        {
+            "id": 4,
+            "name": "Планшет",
+            "shortname": "tablet",
+            "description": "Lorem ipsum",
+            "price": 7999.99
+        }
+    ]
+}
