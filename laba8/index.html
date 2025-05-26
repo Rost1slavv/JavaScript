@@ -1,0 +1,88 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мій сайт</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <button class="hamburger">☰</button>
+        <div class="menu">
+            <a href="#" id="home-link">🏠 Додому</a>
+            <a href="#" id="catalog-link">📋 Каталог</a>
+            <a href="#" id="specials-link">⭐ Specials</a>
+        </div>
+    </nav>
+    <div class="carousel">
+        <div class="slides">
+            <img src="https://place-hold.it/800x400?text=Slide1" alt="Slide 1">
+            <img src="https://place-hold.it/800x400?text=Slide2" alt="Slide 2">
+            <img src="https://place-hold.it/800x400?text=Slide3" alt="Slide 3">
+            <img src="https://place-hold.it/800x400?text=Slide4" alt="Slide 4">
+        </div>
+        <button class="prev">❮</button>
+        <button class="next">❯</button>
+        <div class="indicators">
+            <span class="dot" data-slide="0"></span>
+            <span class="dot" data-slide="1"></span>
+            <span class="dot" data-slide="2"></span>
+            <span class="dot" data-slide="3"></span>
+        </div>
+    </div>
+    <div id="content">
+        <p>Привітики! Ти можеш вибрати шось із "Каталог" або "Specials"</p>
+    </div>
+    <div class="large-images">
+        <img src="https://place-hold.it/200x200?text=Large1" alt="Large 1">
+        <img src="https://place-hold.it/200x200?text=Large2" alt="Large 2">
+        <img src="https://place-hold.it/200x200?text=Large3" alt="Large 3">
+    </div>
+    <div class="medium-images">
+        <img src="https://place-hold.it/200x200?text=Medium1" alt="Medium 1">
+        <img src="https://place-hold.it/200x200?text=Medium2" alt="Medium 2">
+        <img src="https://place-hold.it/200x200?text=Medium3" alt="Medium 3">
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
