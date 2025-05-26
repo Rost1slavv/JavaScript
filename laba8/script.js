@@ -158,6 +158,6 @@ document.addEventListener('DOMContentLoaded', function() {
     setInterval(function() {
         showSlide(currentSlide + 1);
     }, 5000);
-    
+
     showSlide(0);
 });
