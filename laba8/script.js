@@ -118,14 +118,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Hamburger menu toggle
     const hamburger = document.querySelector('.hamburger');
     const menu = document.querySelector('.menu');
     hamburger.addEventListener('click', function() {
         menu.classList.toggle('open');
     });
 
-    // Carousel functionality
     const carousel = document.querySelector('.carousel');
     const slides = carousel.querySelector('.slides');
     const prevBtn = carousel.querySelector('.prev');
@@ -157,11 +155,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Automatic sliding
     setInterval(function() {
         showSlide(currentSlide + 1);
     }, 5000);
-
-    // Initial slide
+    
     showSlide(0);
 });
