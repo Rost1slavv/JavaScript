@@ -14,11 +14,14 @@ nav {
     background-color: #ffffff;
     padding: 10px;
     border-radius: 5px;
-    margin: 20px 0;
+    margin: 0;
     display: flex;
     justify-content: center;
     width: 100%;
-    position: relative;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    z-index: 1000; 
 }
 
 nav a {
@@ -46,6 +49,7 @@ nav a:hover {
     position: absolute;
     left: 10px;
     top: 10px;
+    z-index: 1001; 
 }
 
 .menu {
@@ -60,7 +64,7 @@ nav a:hover {
     .menu {
         display: none;
         position: absolute;
-        top: 50px;
+        top: 50px; 
         left: 0;
         width: 100%;
         background-color: #ffffff;
@@ -68,6 +72,7 @@ nav a:hover {
         transform: translateY(-20px);
         opacity: 0;
         transition: transform 0.3s ease, opacity 0.3s ease;
+        z-index: 1000;
     }
     .menu.open {
         display: flex;
@@ -94,7 +99,7 @@ nav a:hover {
     position: relative;
     width: 100%;
     max-width: 800px;
-    margin: 20px auto;
+    margin: 70px auto 20px; 
     overflow: hidden;
 }
 
