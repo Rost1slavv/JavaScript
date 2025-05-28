@@ -1,0 +1,131 @@
+/* Загальні стилі */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Навігаційне меню */
+.navbar {
+    background-color: #333;
+    padding: 10px;
+}
+
+.hamburger {
+    display: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+
+.nav-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav-menu li {
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.icon {
+    margin-right: 5px;
+}
+
+@media (max-width: 767px) {
+    .hamburger {
+        display: block;
+    }
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+    }
+    .nav-menu.active {
+        display: flex;
+        animation: slideDown 0.3s ease-in-out;
+    }
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}
+
+/* Карусель */
+.carousel {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.slide {
+    width: 100%;
+    display: none;
+}
+
+.slide.active {
+    display: block;
+}
+
+button.prev, button.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+button.prev { left: 10px; }
+button.next { right: 10px; }
+
+.indicators {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: #ccc;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.indicator.active {
+    background: #333;
+}
+
+/* Зображення для пристроїв */
+.large-images, .medium-images {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.large-images img, .medium-images img {
+    margin: 10px;
+}
+
+@media (min-width: 768px) {
+    .large-images { display: block; }
+    .medium-images { display: none; }
+}
+
+@media (max-width: 767px) {
+    .large-images { display: none; }
+    .medium-images { display: block; }
+}
