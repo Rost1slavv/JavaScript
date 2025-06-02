@@ -1,4 +1,3 @@
-// Навігаційне меню
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 
@@ -6,7 +5,6 @@ hamburger.addEventListener('click', () => {
     navMenu.classList.toggle('active');
 });
 
-// Карусель
 const slides = document.querySelectorAll('.slide');
 const prev = document.querySelector('.prev');
 const next = document.querySelector('.next');
@@ -40,8 +38,6 @@ indicators.forEach(indicator => {
     });
 });
 
-// Автоматична зміна слайдів кожні 3 секунди
 setInterval(nextSlide, 3000);
 
-// Початкове відображення
 showSlide(currentSlide);
